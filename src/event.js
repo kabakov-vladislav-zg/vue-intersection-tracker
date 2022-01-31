@@ -1,8 +1,9 @@
+import { Box } from "./box"
+
 export class Event {
-  constructor(scene, intersecting, margin) {
-    this._box = scene.getBoundingClientRect()
+  constructor({ scene, intersecting, settings }) {
+    this._box = new Box(scene, settings.rootMargin)
     this._intersecting = intersecting
-    this._margin = Number(margin) || 0
   }
 
   _correct(progress) {
@@ -10,21 +11,21 @@ export class Event {
   }
 
   get up1() {
-    return this._correct(1 - (this._box.top + this._margin) / document.documentElement.clientHeight)
+    return this._correct(1 - this._box.top / document.documentElement.clientHeight)
   }
   get up2() {
-    return this._correct(1 - (this._box.bottom - this._margin) / (this._box.height - 2 * this._margin))
+    return this._correct(1 - this._box.bottom / this._box.height)
   }
 
   get down1() {
-    return this._correct(1 - (this._box.bottom - this._margin -  document.documentElement.clientHeight) / (this._box.height - 2 * this._margin))
+    return this._correct(1 - (this._box.bottom -  document.documentElement.clientHeight) / this._box.height)
   }
   get down2() {
-    return this._correct(1 - (this._box.bottom - this._margin) / document.documentElement.clientHeight)
+    return this._correct(1 - this._box.bottom / document.documentElement.clientHeight)
   }
 
   get through() {
-    return this._correct(1 - (this._box.bottom - this._margin) / (document.documentElement.clientHeight + this._box.height - 2 * this._margin))
+    return this._correct(1 - this._box.bottom / (document.documentElement.clientHeight + this._box.height))
   }
   get isIntersecting() {
     return this._intersecting

@@ -1,23 +1,32 @@
 {
   "name": "vue-intersection-tracker",
-  "version": "0.1.0",
-  "private": false,
-  "scripts": {
-    "serve": "vue-cli-service serve ./demo/main.js",
-    "build": "vue-cli-service build --target lib ./src/index.js",
-    "build:demo": "vue-cli-service build --dest gh-pages && gh-pages -d gh-pages",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit",
-    "test:unit:watch": "vue-cli-service test:unit --watch",
-    "release": "semantic-release --no-ci"
+  "description": "Directive to tracking of target element intersection ratio",
+  "version": "0.0.1",
+  "keywords": [
+    "vue",
+    "intersection",
+    "observer",
+    "parallax",
+    "scroll",
+    "animation",
+    "effects",
+    "directive"
+  ],
+  "homepage": "https://kabakov-vladislav-zg.github.io/vue-intersection-tracker/",
+  "author": "Kabakov Vladislav <zloy.gololed@gmail.com> (https://github.com/kabakov-vladislav-zg)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kabakov-vladislav-zg/vue-intersection-tracker"
   },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --dest dist/lib --target lib ./src/index.js",
+    "build:demo": "vue-cli-service build --mode development --dest dist/demo -d gh-pages"
+  },
+  "main": "vue-intersection-tracker.umd.js",
   "dependencies": {
-    "bootstrap": "^5.1.3",
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "lodash": "^4.17.21",
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -31,7 +40,11 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3",
-    "vue-jest": "^5.0.0-0"
+    "vue-jest": "^5.0.0-0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0",
+    "bootstrap": "^5.1.3",
+    "core-js": "^3.6.5"
   },
   "browserslist": [
     "> 1%",
@@ -43,5 +56,8 @@
     "transform": {
       "^.+\\.vue$": "vue-jest"
     }
-  }
+  },
+  "files": [
+    "dist/lib/*"
+  ]
 }

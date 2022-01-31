@@ -21,14 +21,14 @@ export default {
 
   data() {
     return {
-      progress: 0
+      progress: 0,
     }
   },
 
   methods: {
     callback({up2}) {
       this.progress = up2
-    }
+    },
   }
 }
 </script>

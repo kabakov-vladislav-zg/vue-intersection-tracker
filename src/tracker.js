@@ -1,21 +1,27 @@
 import { Event } from './event'
 
 export class Tracker {
-  constructor(scene, notify, margin) {
-    this._state = false
+  constructor({ scene, handler, settings }) {
     this._scene = scene
-    this._notify = notify
-    this._margin = margin
+    this._handler = handler
+    this._settings = settings
+
+    this._state = false
   }
 
   handleEvent() {
-    this._notify(new Event(this._scene, this._state, this._margin))
+    let e = new Event({
+      scene: this._scene,
+      intersecting: this._state,
+      settings: this._settings
+    })
+
+    this._handler(e)
   }
 
   on() {
     if(!this._state) {
       this._state = true
-      this.handleEvent()
       window.addEventListener('scroll', this)
     }
   }
@@ -23,7 +29,6 @@ export class Tracker {
   off() {
     if(this._state) {
       this._state = false
-      this.handleEvent()
       window.removeEventListener('scroll', this)
     }
   }
