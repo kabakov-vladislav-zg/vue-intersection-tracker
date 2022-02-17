@@ -2,6 +2,7 @@
 node_modules
 /dist
 *.bat
+/gh-pages
 
 # local env files
 .env.local
