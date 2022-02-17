@@ -26,8 +26,6 @@ createApp(App).use(intersectionTracker[, settings])
 
 <script>
 export default {
-  name: "SectionDemo",
-
   data() {
     return {
       settings: JSON.stringify({...}), // (2)
